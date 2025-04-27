@@ -1,0 +1,271 @@
+
+ion-content {
+  --background: #e6f2f7;
+}
+
+
+.app-header {
+  background-color: #00796b;
+  color: white;
+  padding: 10px 0;
+  margin: -16px -16px 20px -16px;
+  text-align: left;
+  
+  .header-content {
+    padding: 0 15px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .app-title {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .app-date {
+    font-size: 16px;
+  }
+}
+
+
+h2 {
+  font-size: 22px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+
+.day-preview {
+  margin-top: 20px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  
+  h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #00796b;
+  }
+}
+
+.meal-preview {
+  margin-bottom: 15px;
+  
+  .meal-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .meal-items {
+    color: #666;
+  }
+}
+
+.edit-button, .add-button {
+  background-color: #7dcec9;
+  color: #333;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 30px;
+  font-size: 16px;
+  margin-top: 15px;
+  width: 100%;
+  font-weight: 500;
+}
+
+.no-items {
+  text-align: center;
+  margin-top: 30px;
+  
+  p {
+    color: #666;
+    margin-bottom: 15px;
+  }
+}
+
+
+.day-view {
+  margin-top: 10px;
+}
+
+.day-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  
+  .nav-button {
+    background-color: #7dcec9;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .current-date {
+    font-size: 18px;
+    font-weight: 500;
+  }
+}
+
+.date-picker {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .date-input {
+    padding: 12px 15px;
+    border: 2px solid #7dcec9;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: white;
+    color: #333;
+    width: 100%;
+    max-width: 300px;
+  }
+
+.meal-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.meal-section {
+  background-color: white;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  
+  .meal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    
+    h3 {
+      margin: 0;
+      color: #00796b;
+      font-size: 18px;
+    }
+  }
+}
+
+.add-meal-button {
+  background-color: #7dcec9;
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.food-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+  
+  .delete-button {
+    background: none;
+    border: none;
+    color: #ff5252;
+    font-size: 18px;
+  }
+}
+
+.no-items-meal {
+  color: #999;
+  font-style: italic;
+  padding: 10px 0;
+}
+
+.bottom-actions {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  
+  .back-button, .summary-button {
+    background-color: #7dcec9;
+    color: #333;
+    border: none;
+    padding: 15px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  
+  .summary-button {
+    background-color: #00796b;
+    color: white;
+  }
+}
+
+.add-dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  
+  .dialog-content {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    width: 85%;
+    max-width: 400px;
+    
+    h3 {
+      margin-top: 0;
+      color: #00796b;
+    }
+    
+    input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      font-size: 16px;
+    }
+    
+    .dialog-buttons {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      
+      button {
+        padding: 10px 15px;
+        border-radius: 5px;
+        border: none;
+        font-size: 16px;
+        
+        &:first-child {
+          background-color: #f5f5f5;
+          color: #333;
+        }
+        
+        &:last-child {
+          background-color: #00796b;
+          color: white;
+        }
+      }
+    }
+  }
+}

@@ -1,138 +1,148 @@
 <ion-content class="ion-padding">
     <!-- Header Section -->
     <div class="app-header">
-      <div class="header-content">
-        <div class="app-title">Kidney Health Tracker</div>
-        <div class="app-date">{{ currentDate | date:'EEEE dd MMMM yyyy' }}</div>
-      </div>
-    </div>
-  
-    <!-- Calendar View (shown when calendarView is true) -->
-    <div *ngIf="calendarView">
-      <h2>Select a Date</h2>
-      
-      <!-- Simple calendar implementation -->
-      <div class="date-picker">
-        <input type="date" [(ngModel)]="selectedDateStr" (change)="onDateSelected()" class="date-input">
-      </div>
-      
-      <!-- Preview of logged items for selected date -->
-      <div class="day-preview" *ngIf="hasLoggedItems">
-        <h3>Items logged for {{ selectedDate | date }}</h3>
-        <div class="meal-preview" *ngFor="let meal of previewMeals">
-          <div class="meal-title">{{ meal.type }}</div>
-          <div class="meal-items">{{ meal.items.join(', ') }}</div>
+        <div class="header-content">
+            <!-- Back button that changes based on current view -->
+            <div class="back-nav" *ngIf="calendarView" (click)="navigateToHome()">
+                <ion-icon name="arrow-back-outline"></ion-icon>
+                <span>Return to Home Page</span>
+            </div>
+
+            <div class="back-nav" *ngIf="!calendarView" (click)="showCalendarView()">
+                <ion-icon name="arrow-back-outline"></ion-icon>
+                <span>Return to Overview</span>
+            </div>
+            <!-- App Header Title -->
+            <div class="app-title">Food & Drink Log</div>
         </div>
-        <button class="edit-button" (click)="showDayView()">Edit Day</button>
-      </div>
-      
-      <!-- No items message -->
-      <div class="no-items" *ngIf="!hasLoggedItems">
-        <p>No items logged for this date</p>
-        <button class="add-button" (click)="showDayView()">Add Items</button>
-      </div>
     </div>
-  
+
+    <!-- Calendar View (shown when calendarView is true) -->
+    <div *ngIf="calendarView" class="calendar-view">
+        <h2>Select a Date</h2>
+
+        <!-- Simple calendar -->
+        <div class="date-picker">
+            <input type="date" [(ngModel)]="selectedDateStr" (change)="onDateSelected()" class="date-input">
+        </div>
+
+        <!-- Preview of logged items for selected date -->
+        <div class="day-preview" *ngIf="hasLoggedItems">
+            <h3>Items logged for {{ selectedDate | date }}</h3>
+            <div class="meal-preview" *ngFor="let meal of previewMeals">
+                <div class="meal-title">{{ meal.type }}</div>
+                <div class="meal-items">{{ meal.items.join(', ') }}</div>
+            </div>
+            <button class="edit-button" (click)="showDayView()">Edit Day</button>
+        </div>
+
+        <!-- No items message -->
+        <div class="no-items" *ngIf="!hasLoggedItems">
+            <p>No items logged for this date</p>
+            <button class="add-button" (click)="showDayView()">Add Items</button>
+        </div>
+    </div>
+
     <!-- Day View (shown when calendarView is false) -->
     <div *ngIf="!calendarView" class="day-view">
-      <!-- Day Navigation -->
-      <div class="day-navigation">
-        <button class="nav-button" (click)="previousDay()">
-          &lt;
-        </button>
-        <div class="current-date">{{ selectedDate | date:'EEEE dd MMMM' }}</div>
-        <button class="nav-button" (click)="nextDay()">
-          &gt;
-        </button>
-      </div>
-      
-      <!-- Meal sections -->
-      <div class="meal-sections">
-        <!-- Breakfast -->
-        <div class="meal-section">
-          <div class="meal-header">
-            <h3>Breakfast</h3>
-            <button class="add-meal-button" (click)="addItem('breakfast')">+</button>
-          </div>
-          <div class="meal-items">
-            <div *ngFor="let item of meals.breakfast; let i = index" class="food-item">
-              <span>{{ item }}</span>
-              <button class="delete-button" (click)="removeItem('breakfast', i)">×</button>
-            </div>
-            <div *ngIf="meals.breakfast.length === 0" class="no-items-meal">
-              No items added
-            </div>
-          </div>
+        <!-- Day Navigation -->
+        <div class="day-navigation">
+            <button class="nav-button" (click)="previousDay()">
+                &lt;
+            </button>
+            <div class="current-date">{{ selectedDate | date:'EEEE d MMMM yyyy' }}</div>
+            <button class="nav-button" (click)="nextDay()">
+                &gt;
+            </button>
         </div>
-        
-        <!-- Lunch -->
-        <div class="meal-section">
-          <div class="meal-header">
-            <h3>Lunch</h3>
-            <button class="add-meal-button" (click)="addItem('lunch')">+</button>
-          </div>
-          <div class="meal-items">
-            <div *ngFor="let item of meals.lunch; let i = index" class="food-item">
-              <span>{{ item }}</span>
-              <button class="delete-button" (click)="removeItem('lunch', i)">×</button>
+
+        <!-- Meal sections -->
+        <div class="meal-sections">
+            <!-- Breakfast -->
+            <div class="meal-section">
+                <div class="meal-header">
+                    <h3>Breakfast</h3>
+                    <button class="add-meal-button" (click)="addItem('breakfast')">+</button>
+                </div>
+                <div class="meal-items">
+                    <div *ngFor="let item of meals.breakfast; let i = index" class="food-item">
+                        <span>{{ item }}</span>
+                        <button class="delete-button" (click)="removeItem('breakfast', i)">×</button>
+                    </div>
+                    <div *ngIf="meals.breakfast.length === 0" class="no-items-meal">
+                        No items added
+                    </div>
+                </div>
             </div>
-            <div *ngIf="meals.lunch.length === 0" class="no-items-meal">
-              No items added
+
+            <!-- Lunch -->
+            <div class="meal-section">
+                <div class="meal-header">
+                    <h3>Lunch</h3>
+                    <button class="add-meal-button" (click)="addItem('lunch')">+</button>
+                </div>
+                <div class="meal-items">
+                    <div *ngFor="let item of meals.lunch; let i = index" class="food-item">
+                        <span>{{ item }}</span>
+                        <button class="delete-button" (click)="removeItem('lunch', i)">×</button>
+                    </div>
+                    <div *ngIf="meals.lunch.length === 0" class="no-items-meal">
+                        No items added
+                    </div>
+                </div>
             </div>
-          </div>
+
+            <!-- Dinner -->
+            <div class="meal-section">
+                <div class="meal-header">
+                    <h3>Dinner</h3>
+                    <button class="add-meal-button" (click)="addItem('dinner')">+</button>
+                </div>
+                <div class="meal-items">
+                    <div *ngFor="let item of meals.dinner; let i = index" class="food-item">
+                        <span>{{ item }}</span>
+                        <button class="delete-button" (click)="removeItem('dinner', i)">×</button>
+                    </div>
+                    <div *ngIf="meals.dinner.length === 0" class="no-items-meal">
+                        No items added
+                    </div>
+                </div>
+            </div>
+
+            <!-- Snacks -->
+            <div class="meal-section">
+                <div class="meal-header">
+                    <h3>Snacks</h3>
+                    <button class="add-meal-button" (click)="addItem('snacks')">+</button>
+                </div>
+                <div class="meal-items">
+                    <div *ngFor="let item of meals.snacks; let i = index" class="food-item">
+                        <span>{{ item }}</span>
+                        <button class="delete-button" (click)="removeItem('snacks', i)">×</button>
+                    </div>
+                    <div *ngIf="meals.snacks.length === 0" class="no-items-meal">
+                        No items added
+                    </div>
+                </div>
+            </div>
         </div>
-        
-        <!-- Dinner -->
-        <div class="meal-section">
-          <div class="meal-header">
-            <h3>Dinner</h3>
-            <button class="add-meal-button" (click)="addItem('dinner')">+</button>
-          </div>
-          <div class="meal-items">
-            <div *ngFor="let item of meals.dinner; let i = index" class="food-item">
-              <span>{{ item }}</span>
-              <button class="delete-button" (click)="removeItem('dinner', i)">×</button>
-            </div>
-            <div *ngIf="meals.dinner.length === 0" class="no-items-meal">
-              No items added
-            </div>
-          </div>
+
+        <!-- Bottom Actions -->
+        <div class="bottom-actions">
+            <button class="back-button" (click)="showCalendarView()">Back to Calendar</button>
+            <button class="summary-button" (click)="viewDailySummary()">View Daily Nutrition Summary</button>
         </div>
-        
-        <!-- Snacks -->
-        <div class="meal-section">
-          <div class="meal-header">
-            <h3>Snacks</h3>
-            <button class="add-meal-button" (click)="addItem('snacks')">+</button>
-          </div>
-          <div class="meal-items">
-            <div *ngFor="let item of meals.snacks; let i = index" class="food-item">
-              <span>{{ item }}</span>
-              <button class="delete-button" (click)="removeItem('snacks', i)">×</button>
-            </div>
-            <div *ngIf="meals.snacks.length === 0" class="no-items-meal">
-              No items added
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Bottom Actions -->
-      <div class="bottom-actions">
-        <button class="back-button" (click)="showCalendarView()">Back to Calendar</button>
-        <button class="summary-button" (click)="viewDailySummary()">View Daily Nutrition Summary</button>
-      </div>
     </div>
-  
+
     <!-- Add item dialog (simple implementation) -->
     <div class="add-dialog" *ngIf="showAddDialog">
-      <div class="dialog-content">
-        <h3>Add {{ currentMealType }}</h3>
-        <input type="text" [(ngModel)]="newItemName" placeholder="Food name">
-        <div class="dialog-buttons">
-          <button (click)="cancelAdd()">Cancel</button>
-          <button (click)="confirmAdd()">Add</button>
+        <div class="dialog-content">
+            <h3>Add {{ currentMealType }}</h3>
+            <input type="text" [(ngModel)]="newItemName" placeholder="Food name">
+            <div class="dialog-buttons">
+                <button (click)="cancelAdd()">Cancel</button>
+                <button (click)="confirmAdd()">Add</button>
+            </div>
         </div>
-      </div>
     </div>
-  </ion-content>
+</ion-content>

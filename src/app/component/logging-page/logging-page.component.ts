@@ -88,6 +88,11 @@ export class LoggingPageComponent implements OnInit {
     }
   }
 
+  // Navigation to home page
+  navigateToHome(): void {
+    this.router.navigate(['/home']);
+  }
+
   // Prepare preview data for the calendar view
   preparePreviewData() {
     this.previewMeals = [];

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { IonicModule } from '@ionic/angular';
+import { IonicModule, ToastController } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -41,7 +41,7 @@ export class SettingsPageComponent implements OnInit {
   // Current settings
   settings: AppSettings = { ...this.defaultSettings };
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private toastController: ToastController) { }
 
   ngOnInit() {
     this.loadSettings();
@@ -56,27 +56,59 @@ export class SettingsPageComponent implements OnInit {
   }
 
   // Save settings to localStorage
-  saveSettings() {
+  async saveSettings() {
     localStorage.setItem('appSettings', JSON.stringify(this.settings));
 
-    // Apply settings to the app (in a real app, you would use a service for this)
+    // Apply settings to the app
     this.applySettings();
+    
+    // Show success toast
+    const toast = await this.toastController.create({
+      message: 'Settings saved successfully',
+      duration: 2000,
+      position: 'bottom',
+      color: 'success',
+      buttons: [
+        {
+          text: 'OK',
+          role: 'cancel'
+        }
+      ]
+    });
+    
+    await toast.present();
   }
 
   // Reset settings to default values
-  resetSettings() {
+  async resetSettings() {
     this.settings = { ...this.defaultSettings };
-    this.saveSettings();
-    // Show a toast or alert that settings have been reset
-    alert('Settings have been reset to default values');
+    
+    // Save to localStorage
+    localStorage.setItem('appSettings', JSON.stringify(this.settings));
+    
+    // Show toast message that settings have been reset
+    const toast = await this.toastController.create({
+      message: 'Settings have been reset to default values',
+      duration: 2000,
+      position: 'bottom',
+      color: 'primary',
+      buttons: [
+        {
+          text: 'OK',
+          role: 'cancel'
+        }
+      ]
+    });
+    
+    await toast.present();
   }
 
-  // Apply settings to the app (placeholder for now)
+  // Apply settings to the app
   applySettings() {
-    // In a real app, you would apply text size, contrast, etc. here
+    
     console.log('Settings applied:', this.settings);
 
-    // Example of how you might apply text size
+    // Example of text size
     const htmlElement = document.querySelector('html');
     if (htmlElement) {
       // Remove any existing text size classes
@@ -85,7 +117,7 @@ export class SettingsPageComponent implements OnInit {
       htmlElement.classList.add(`text-${this.settings.textSize}`);
     }
 
-    // Example of how you might apply high contrast
+    // Example of high contrast
     if (this.settings.highContrast) {
       document.body.classList.add('high-contrast');
     } else {

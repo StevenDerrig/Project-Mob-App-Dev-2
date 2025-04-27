@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -44,13 +44,37 @@ export class LoggingPageComponent implements OnInit {
   currentMealType: string = '';
   newItemName: string = '';
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     // Set the initial date string to match the Date object
     this.selectedDateStr = this.formatDate(this.selectedDate);
-    // Load saved data if exists
-    this.loadMealsForDate(this.selectedDate);
+
+    this.route.queryParams.subscribe(params => {
+      // If a product is being added from the scan page
+      if (params['productName'] && params['addProduct'] === 'true') {
+        // Set to day view
+        this.calendarView = false;
+
+        // Get the product name
+        this.newItemName = params['productName'];
+
+        // If date parameter is provided, use it
+        if (params['date']) {
+          this.selectedDateStr = params['date'];
+          this.selectedDate = new Date(this.selectedDateStr);
+        }
+
+        // Open the add dialog to ensure the view has loaded
+        setTimeout(() => {
+          this.currentMealType = 'breakfast'; // Default to breakfast
+          this.showAddDialog = true;
+        }, 300);
+      }
+
+      // Load saved data if exists
+      this.loadMealsForDate(this.selectedDate);
+    });
   }
 
   // Date selection in calendar

@@ -176,7 +176,8 @@ export class ScanProdPageComponent implements OnInit {
   addToLog() {
     // Navigate to the logging page with the product info
     this.router.navigate(['/logging-page'], {
-      queryParams: { productName: this.product.name }
+      queryParams: { productName: this.product.name, addProduct: 'true',
+        date: new Date().toISOString().split('T')[0] }
     });
   }
 

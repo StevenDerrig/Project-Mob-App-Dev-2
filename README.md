@@ -1,59 +1,63 @@
-# KidneyHealthTracker
+Kidney Health Tracker
+This is a prototype that demonstrates what I have in mind for the overall app.
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.4.
+Context
+Kidney patients have strict dietary restrictions, that makes it hard to track and maintain, on what they can eat and drink.
 
-## Development server
+An older family member of mine has been recently diagnosed with kidney disease. The objective of this app is to help my family member and older kidney patients to keep track of their diet intake.
 
-To start a local development server, run:
+Many of the apps aren't designed with older users in mind, hence my app idea and design approach to the prototype.
 
-```bash
-ng serve
-```
+It is recommended for patients of kidney disease to track and monitor their sodium, potassium and phosphorus intake.
+This can be overwhelming and time consuming, which is why I want to add the scan feature to get immediate feedback on whether food items are safe or not for their current condition.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Problem Statement
 
-## Code scaffolding
+Kidney patients have a hard time to make informed decisions while shopping, as the ingredients and nutritional information can be overwhelming to get through.
+Older patients would need simple and actionable guidance on dietary choices specific to kidney health.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Proposed Solution
 
-```bash
-ng generate component component-name
-```
+The solution I propose to this, is a simplified health tracking app, specifically designed in mind for older and non-tech savvy people.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Key features:
+-Barcode scanner, to identify product information, in a concise manner.
+-Color-coded nutritional information, traffic light system.
+-Daily intake organised by date and mealtimes.
+-Alternative suggestions, for unsafe foods, or are high in sodium, potassium and phosphorus.
+-Accessible interface for older users and non-tech savvy.
 
-```bash
-ng generate --help
-```
+Design principles:
+-High contrast colours and large touch targets.
+-Minimal steps to complete tasks (example toggle button for settings).
+-Clear and direct language.
+-Consistent navigation patterns.
 
-## Building
+Benefits:
+-Immediate feedback on product information in regard to kidney health.
+-Simplified tracking of specific kidney nutrients.
+-Actionable alternatives for products when they are unsuitable.
+-Easy sharing and logging of dietary information with healthcare providers.
+Technology Implementation
+•	Angular 19.2.3 as the main framework
+•	Ionic UI components for mobile-friendly design
+•	TypeScript for enhanced development
+•	LocalStorage for data persistence
 
-To build the project run:
+Project Structure
+Key Components
+1. Home Page: Central dashboard with quick access to main features
+2. Logging Page: Food intake tracking organized by meal types
+3. Daily Summary: Visual nutrient tracking with color-coded indicators
+4. Scan Product: Simulated barcode scanning with traffic light feedback
+5. Settings: Accessibility options and personalization
 
-```bash
-ng build
-```
+Installation Instructions
+1. Clone this repository
+2. Run npm install to install dependencies
+3. Run ng serve to start the development server
+4. Navigate to http://localhost:4200/ in your browser
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Further consideration:
+-Test the app with kidney patients to validate design choices.
+-Integrate with nutritional and healthcare databases for comprehensive product information. -Implement actual barcode scanning functionality -Add backend services for data persistence -Enhance the alternative suggestion algorithm

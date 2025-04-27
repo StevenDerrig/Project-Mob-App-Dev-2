@@ -1,1 +1,71 @@
-<p>home-page works!</p>
+<ion-content>
+    <div class="home-container">
+      <div class="welcome-section">
+        <h1>Kidney Health Tracker</h1>
+        <p>Track your diet for better kidney health</p>
+      </div>
+
+    <!-- Quick Stats Section -->
+      <div class="quick-stats">
+        <h3>Today's Overview</h3>
+        <div class="stats-container">
+          <div class="stat-item">
+            <div class="stat-circle green">
+              <span>Na</span>
+            </div>
+            <p>Sodium</p>
+          </div>
+          <div class="stat-item">
+            <div class="stat-circle yellow">
+              <span>K</span>
+            </div>
+            <p>Potassium</p>
+          </div>
+          <div class="stat-item">
+            <div class="stat-circle red">
+              <span>P</span>
+            </div>
+            <p>Phosphorus</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Log Food Button -->
+      <div class="feature-button" (click)="navigateToLogging()">
+        <ion-icon name="restaurant-outline"></ion-icon>
+        <div class="feature-text">
+          <h2>Log Food</h2>
+          <p>Record what you ate today</p>
+        </div>
+      </div>
+
+        <!-- Daily Summary Button -->
+        <div class="feature-button" (click)="navigateToDaily()">
+          <ion-icon name="calendar-outline"></ion-icon>
+          <div class="feature-text">
+            <h2>Daily Summary</h2>
+            <p>View your nutritional intake</p>
+          </div>
+        </div>
+
+        <div class="features-grid">
+            <!-- Scan Product Button -->
+            <div class="feature-button" (click)="navigateToScan()">
+              <ion-icon name="scan-outline"></ion-icon>
+              <div class="feature-text">
+                <h2>Scan Product</h2>
+                <p>Check if a food item is safe</p>
+              </div>
+            </div>
+
+        <!-- Settings Button -->
+        <div class="feature-button" (click)="navigateToSettings()">
+          <ion-icon name="settings-outline"></ion-icon>
+          <div class="feature-text">
+            <h2>Settings</h2>
+            <p>Customize your app</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>

@@ -41,6 +41,7 @@ export class LoggingPageComponent implements OnInit {
 
   // Add item dialog
   showAddDialog: boolean = false;
+  showMealSelectionDialog: boolean = false;
   currentMealType: string = '';
   newItemName: string = '';
 
@@ -67,14 +68,26 @@ export class LoggingPageComponent implements OnInit {
 
         // Open the add dialog to ensure the view has loaded
         setTimeout(() => {
-          this.currentMealType = 'breakfast'; // Default to breakfast
-          this.showAddDialog = true;
+          this.showMealSelectionDialog = true;
         }, 300);
       }
 
       // Load saved data if exists
       this.loadMealsForDate(this.selectedDate);
     });
+  }
+
+   // Select which meal to add the item to
+   selectMealType(mealType: string) {
+    this.currentMealType = mealType;
+    this.showMealSelectionDialog = false;
+    this.showAddDialog = true;
+  }
+
+  // Cancel meal selection
+  cancelMealSelection() {
+    this.showMealSelectionDialog = false;
+    this.newItemName = '';
   }
 
   // Date selection in calendar
@@ -86,7 +99,6 @@ export class LoggingPageComponent implements OnInit {
   // Load meals for a specific date
   loadMealsForDate(date: Date) {
     // For demo purposes, use this mock data
-    // In a real app, this would load from storage or service
     const dateString = this.formatDate(date);
 
     // Check if we have stored data

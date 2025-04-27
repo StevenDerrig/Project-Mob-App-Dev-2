@@ -134,7 +134,38 @@
         </div>
     </div>
 
-    <!-- Add item dialog (simple implementation) -->
+    <!-- Meal Selection Dialog -->
+    <div class="add-dialog" *ngIf="showMealSelectionDialog">
+        <div class="dialog-content">
+            <h3>Select Meal Type</h3>
+            <p>Where would you like to add "{{ newItemName }}"?</p>
+
+            <div class="meal-buttons">
+                <button (click)="selectMealType('breakfast')" class="meal-button">
+                    <ion-icon name="sunny-outline"></ion-icon>
+                    Breakfast
+                </button>
+                <button (click)="selectMealType('lunch')" class="meal-button">
+                    <ion-icon name="restaurant-outline"></ion-icon>
+                    Lunch
+                </button>
+                <button (click)="selectMealType('dinner')" class="meal-button">
+                    <ion-icon name="moon-outline"></ion-icon>
+                    Dinner
+                </button>
+                <button (click)="selectMealType('snacks')" class="meal-button">
+                    <ion-icon name="cafe-outline"></ion-icon>
+                    Snacks
+                </button>
+            </div>
+
+            <div class="dialog-buttons">
+                <button (click)="cancelMealSelection()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add item dialog -->
     <div class="add-dialog" *ngIf="showAddDialog">
         <div class="dialog-content">
             <h3>Add {{ currentMealType }}</h3>

@@ -22,15 +22,25 @@ ion-content {
     align-items: center;
     cursor: pointer;
     margin-right: 15px;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 5px 10px;
+    border-radius: 20px;
+    transition: background-color 0.2s;
+  }
+
+  .back-nav:hover {
+    background-color: rgba(255, 255, 255, 0.3);
   }
   
   .back-nav ion-icon {
-    font-size: 24px;
+    font-size: 22px;
     margin-right: 5px;
+    color: white;
   }
   
   .back-nav span {
-    font-size: 16px;
+    font-size: 14px;
+    color: white;
   }
   
   .app-title {

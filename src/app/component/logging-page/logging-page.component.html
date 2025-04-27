@@ -4,12 +4,12 @@
         <div class="header-content">
             <!-- Back button that changes based on current view -->
             <div class="back-nav" *ngIf="calendarView" (click)="navigateToHome()">
-                <ion-icon name="arrow-back-outline"></ion-icon>
+                <ion-icon name="arrow-back-outline" size="large"></ion-icon>
                 <span>Return to Home Page</span>
             </div>
 
             <div class="back-nav" *ngIf="!calendarView" (click)="showCalendarView()">
-                <ion-icon name="arrow-back-outline"></ion-icon>
+                <ion-icon name="arrow-back-outline" size="large"></ion-icon>
                 <span>Return to Overview</span>
             </div>
             <!-- App Header Title -->

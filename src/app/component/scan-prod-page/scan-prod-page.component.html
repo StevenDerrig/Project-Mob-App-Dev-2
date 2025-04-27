@@ -1,1 +1,124 @@
-<p>scan-prod-page works!</p>
+<ion-content class="ion-padding">
+    <!-- Header Section -->
+    <div class="app-header">
+      <div class="header-content">
+        <!-- Back navigation -->
+        <div class="back-nav" (click)="navigateToHome()">
+          <ion-icon name="arrow-back-outline" size="large"></ion-icon>
+          <span>Back</span>
+        </div>
+        <!-- App Header Title -->
+        <div class="app-title">Scan Product</div>
+      </div>
+    </div>
+  
+    <!-- Camera/Scan View -->
+    <div class="scan-container" *ngIf="!showProductInfo">
+      <!-- Mock camera view -->
+      <div class="camera-view">
+        <div class="scan-frame">
+          <div class="scan-corner top-left"></div>
+          <div class="scan-corner top-right"></div>
+          <div class="scan-corner bottom-left"></div>
+          <div class="scan-corner bottom-right"></div>
+          <div class="scan-line"></div>
+        </div>
+        <div class="scan-instruction">Position barcode within frame</div>
+      </div>
+      
+      <!-- Scan controls -->
+      <div class="scan-controls">
+        <button class="action-button" (click)="Scan()">
+          <ion-icon name="scan-outline"></ion-icon>
+          <span>Scan</span>
+        </button>
+        <button class="action-button secondary" (click)="navigateToHome()">
+          <ion-icon name="close-outline"></ion-icon>
+          <span>Cancel</span>
+        </button>
+      </div>
+    </div>
+  
+    <!-- Product Info View -->
+    <div class="product-info" *ngIf="showProductInfo">
+      <div class="product-card">
+        <h2 class="product-name">{{ product.name }}</h2>
+        
+        <!-- Overall Status -->
+        <div class="status-badge" [ngClass]="product.safetyClass">
+          {{ product.safetyMessage }}
+        </div>
+        
+        <!-- Nutrients -->
+        <div class="nutrients-section">
+          <h3>Nutrient Content</h3>
+          
+          <!-- Sodium -->
+          <div class="nutrient-item">
+            <div class="nutrient-header">
+              <span class="nutrient-name">Sodium</span>
+              <span class="nutrient-value">{{ product.sodium }}mg</span>
+            </div>
+            <div class="nutrient-bar">
+              <div class="nutrient-fill" [ngClass]="product.sodiumClass" 
+                   [style.width]="product.sodiumPercentage + '%'"></div>
+            </div>
+            <div class="nutrient-status">{{ product.sodiumStatus }}</div>
+          </div>
+          
+          <!-- Potassium -->
+          <div class="nutrient-item">
+            <div class="nutrient-header">
+              <span class="nutrient-name">Potassium</span>
+              <span class="nutrient-value">{{ product.potassium }}mg</span>
+            </div>
+            <div class="nutrient-bar">
+              <div class="nutrient-fill" [ngClass]="product.potassiumClass" 
+                   [style.width]="product.potassiumPercentage + '%'"></div>
+            </div>
+            <div class="nutrient-status">{{ product.potassiumStatus }}</div>
+          </div>
+          
+          <!-- Phosphorus -->
+          <div class="nutrient-item">
+            <div class="nutrient-header">
+              <span class="nutrient-name">Phosphorus</span>
+              <span class="nutrient-value">{{ product.phosphorus }}mg</span>
+            </div>
+            <div class="nutrient-bar">
+              <div class="nutrient-fill" [ngClass]="product.phosphorusClass" 
+                   [style.width]="product.phosphorusPercentage + '%'"></div>
+            </div>
+            <div class="nutrient-status">{{ product.phosphorusStatus }}</div>
+          </div>
+        </div>
+        
+        <!-- Alternatives Section -->
+        <div class="alternatives-section" *ngIf="product.alternatives.length > 0">
+          <h3>Healthier Alternatives</h3>
+          <div class="alternatives-list">
+            <div class="alternative-item" *ngFor="let alt of product.alternatives">
+              <span class="alt-name">{{ alt.name }}</span>
+              <div class="alt-nutrients">
+                <span class="alt-nutrient" [ngClass]="alt.sodiumClass">Na: {{ alt.sodium }}mg</span>
+                <span class="alt-nutrient" [ngClass]="alt.potassiumClass">K: {{ alt.potassium }}mg</span>
+                <span class="alt-nutrient" [ngClass]="alt.phosphorusClass">P: {{ alt.phosphorus }}mg</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Bottom actions -->
+      <div class="bottom-actions">
+        <button class="action-button" (click)="addToLog()">
+          <ion-icon name="add-outline"></ion-icon>
+          <span>Add to Food Log</span>
+        </button>
+        <button class="action-button secondary" (click)="resetScan()">
+          <ion-icon name="scan-outline"></ion-icon>
+          <span>Scan Another</span>
+        </button>
+      </div>
+    </div>
+  </ion-content>

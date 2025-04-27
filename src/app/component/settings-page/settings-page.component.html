@@ -1,1 +1,116 @@
-<p>settings-page works!</p>
+<ion-content class="ion-padding">
+    <!-- Header Section -->
+    <div class="app-header">
+      <div class="header-content">
+        <!-- Back navigation -->
+        <div class="back-nav" (click)="navigateToHome()">
+          <ion-icon name="arrow-back-outline" size="large"></ion-icon>
+          <span>Back</span>
+        </div>
+        <!-- App Header Title -->
+        <div class="app-title">Settings</div>
+      </div>
+    </div>
+  
+    <!-- Settings Sections -->
+    <div class="settings-container">
+      <!-- Accessibility Settings -->
+      <div class="settings-card">
+        <h3>Accessibility</h3>
+  
+        <!-- Text Size -->
+        <div class="setting-item">
+          <div class="setting-label">Text Size</div>
+          <div class="setting-control">
+            <select [(ngModel)]="settings.textSize" (change)="saveSettings()">
+              <option value="normal">Normal</option>
+              <option value="large">Large</option>
+              <option value="extra-large">Extra Large</option>
+            </select>
+          </div>
+        </div>
+  
+        <!-- High Contrast -->
+        <div class="setting-item">
+          <div class="setting-label">High Contrast Mode</div>
+          <div class="setting-control toggle">
+            <label class="switch">
+              <input type="checkbox" [(ngModel)]="settings.highContrast" (change)="saveSettings()">
+              <span class="slider round"></span>
+            </label>
+            <div class="toggle-label">{{ settings.highContrast ? 'On' : 'Off' }}</div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Nutrition Settings -->
+      <div class="settings-card">
+        <h3>Nutrition Limits</h3>
+  
+        <!-- Sodium Limit -->
+        <div class="setting-item">
+          <div class="setting-label">Sodium Limit (mg/day)</div>
+          <div class="setting-control">
+            <input type="number" [(ngModel)]="settings.sodiumLimit" (change)="saveSettings()" class="number-input">
+          </div>
+        </div>
+  
+        <!-- Potassium Limit -->
+        <div class="setting-item">
+          <div class="setting-label">Potassium Limit (mg/day)</div>
+          <div class="setting-control">
+            <input type="number" [(ngModel)]="settings.potassiumLimit" (change)="saveSettings()" class="number-input">
+          </div>
+        </div>
+  
+        <!-- Phosphorus Limit -->
+        <div class="setting-item">
+          <div class="setting-label">Phosphorus Limit (mg/day)</div>
+          <div class="setting-control">
+            <input type="number" [(ngModel)]="settings.phosphorusLimit" (change)="saveSettings()" class="number-input">
+          </div>
+        </div>
+      </div>
+  
+      <!-- Notification Settings -->
+      <div class="settings-card">
+        <h3>Notifications</h3>
+  
+        <!-- Meal Reminders -->
+        <div class="setting-item">
+          <div class="setting-label">Meal Logging Reminders</div>
+          <div class="setting-control toggle">
+            <label class="switch">
+              <input type="checkbox" [(ngModel)]="settings.mealReminders" (change)="saveSettings()">
+              <span class="slider round"></span>
+            </label>
+            <div class="toggle-label">{{ settings.mealReminders ? 'On' : 'Off' }}</div>
+          </div>
+        </div>
+  
+        <!-- Nutrient Alerts -->
+        <div class="setting-item">
+          <div class="setting-label">Nutrient Limit Alerts</div>
+          <div class="setting-control toggle">
+            <label class="switch">
+              <input type="checkbox" [(ngModel)]="settings.nutrientAlerts" (change)="saveSettings()">
+              <span class="slider round"></span>
+            </label>
+            <div class="toggle-label">{{ settings.nutrientAlerts ? 'On' : 'Off' }}</div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- About Section -->
+      <div class="settings-card about-section">
+        <h3>About the App</h3>
+        <p>Kidney Health Tracker v1.0</p>
+        <p>Developed to help kidney patients track their dietary intake.</p>
+      </div>
+  
+      <!-- Reset Button -->
+      <div class="settings-card">
+        <button class="reset-button" (click)="resetSettings()">Reset to Default Settings</button>
+      </div>
+    </div>
+  </ion-content>

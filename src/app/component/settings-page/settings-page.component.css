@@ -1,0 +1,213 @@
+/* Base styles */
+ion-content {
+    --background: #e6f2f7;
+}
+
+/* Header styles*/
+.app-header {
+    background-color: #00796b;
+    color: white;
+    padding: 10px 0;
+    margin: -16px -16px 20px -16px;
+}
+
+.header-content {
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+}
+
+.back-nav {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-right: 15px;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 5px 10px;
+    border-radius: 20px;
+    transition: background-color 0.2s;
+}
+
+.back-nav:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.back-nav ion-icon {
+    font-size: 22px;
+    margin-right: 5px;
+    color: white;
+}
+
+.back-nav span {
+    font-size: 14px;
+    color: white;
+}
+
+.app-title {
+    font-size: 20px;
+    font-weight: bold;
+    flex-grow: 1;
+    text-align: center;
+}
+
+/* Settings container */
+.settings-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Settings card styles */
+.settings-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.settings-card h3 {
+    margin-top: 0;
+    color: #00796b;
+    font-size: 18px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 8px;
+}
+
+/* Individual setting items */
+.setting-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.setting-item:last-child {
+    border-bottom: none;
+}
+
+.setting-label {
+    font-size: 16px;
+    color: #333;
+}
+
+.setting-control {
+    display: flex;
+    align-items: center;
+}
+
+/* Select input styling */
+select {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: white;
+    min-width: 150px;
+}
+
+/* Number input styling */
+.number-input {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 120px;
+    text-align: right;
+}
+
+/* Toggle switch styling */
+.toggle {
+    display: flex;
+    align-items: center;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-color: #7dcec9;
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px #7dcec9;
+}
+
+input:checked+.slider:before {
+    transform: translateX(26px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.toggle-label {
+    margin-left: 10px;
+    color: #333;
+    font-size: 16px;
+    width: 30px;
+}
+
+/* About section */
+.about-section p {
+    margin: 8px 0;
+    font-size: 14px;
+    color: #666;
+}
+
+/* Reset Button */
+.reset-button {
+    background-color: #f5f5f5;
+    color: #333;
+    border: none;
+    padding: 15px;
+    border-radius: 30px;
+    font-size: 16px;
+    width: 100%;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.reset-button:hover {
+    background-color: #e0e0e0;
+}

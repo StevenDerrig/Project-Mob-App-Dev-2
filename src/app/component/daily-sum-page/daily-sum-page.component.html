@@ -1,1 +1,150 @@
-<p>daily-sum-page works!</p>
+<ion-content class="ion-padding">
+    <!-- Header Section -->
+    <div class="app-header">
+      <div class="header-content">
+        <!-- Back navigation -->
+        <div class="back-nav" (click)="navigateBack()">
+          <ion-icon name="arrow-back-outline" size="large"></ion-icon>
+          <span>Back</span>
+        </div>
+        <!-- App Header Title -->
+        <div class="app-title">Daily Summary</div>
+      </div>
+    </div>
+  
+    <!-- Date Selection -->
+    <div class="day-navigation">
+      <button class="nav-button" (click)="previousDay()">
+        &lt;
+      </button>
+      <div class="current-date">{{ selectedDate | date:'EEEE d MMMM yyyy' }}</div>
+      <button class="nav-button" (click)="nextDay()">
+        &gt;
+      </button>
+    </div>
+  
+    <!-- Daily Overview Card -->
+    <div class="summary-card">
+      <h3>Daily Nutrient Overview</h3>
+      <p class="description">Track your nutrients for better kidney health</p>
+  
+      <!-- Nutrient Gauges -->
+      <div class="nutrient-gauges">
+        <!-- Sodium -->
+        <div class="nutrient-gauge">
+          <div class="gauge-header">
+            <span class="label">Sodium</span>
+            <span class="value">{{ dailySummary.sodium }} mg</span>
+          </div>
+          <div class="gauge-bar">
+            <div class="gauge-fill" [style.width]="getSodiumPercentage() + '%'" 
+                 [ngClass]="getSodiumClass()"></div>
+          </div>
+          <div class="gauge-legend">
+            <span>0</span>
+            <span>{{ sodiumLimit }} mg</span>
+          </div>
+        </div>
+  
+        <!-- Potassium -->
+        <div class="nutrient-gauge">
+          <div class="gauge-header">
+            <span class="label">Potassium</span>
+            <span class="value">{{ dailySummary.potassium }} mg</span>
+          </div>
+          <div class="gauge-bar">
+            <div class="gauge-fill" [style.width]="getPotassiumPercentage() + '%'" 
+                 [ngClass]="getPotassiumClass()"></div>
+          </div>
+          <div class="gauge-legend">
+            <span>0</span>
+            <span>{{ potassiumLimit }} mg</span>
+          </div>
+        </div>
+  
+        <!-- Phosphorus -->
+        <div class="nutrient-gauge">
+          <div class="gauge-header">
+            <span class="label">Phosphorus</span>
+            <span class="value">{{ dailySummary.phosphorus }} mg</span>
+          </div>
+          <div class="gauge-bar">
+            <div class="gauge-fill" [style.width]="getPhosphorusPercentage() + '%'" 
+                 [ngClass]="getPhosphorusClass()"></div>
+          </div>
+          <div class="gauge-legend">
+            <span>0</span>
+            <span>{{ phosphorusLimit }} mg</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Meals Summary -->
+    <div class="meals-summary">
+      <h3>Today's Food Log</h3>
+  
+      <!-- No items message -->
+      <div class="no-items" *ngIf="!hasLoggedItems">
+        <p>No food items logged for this date</p>
+        <button class="add-button" (click)="navigateToLogging()">Add Food Items</button>
+      </div>
+  
+      <!-- Meal breakdowns -->
+      <div class="meal-sections" *ngIf="hasLoggedItems">
+        <!-- Breakfast -->
+        <div class="meal-section" *ngIf="meals.breakfast.length > 0">
+          <div class="meal-header">
+            <h4>Breakfast</h4>
+          </div>
+          <div class="meal-items">
+            <div *ngFor="let item of meals.breakfast" class="food-item">
+              <span>{{ item }}</span>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Lunch -->
+        <div class="meal-section" *ngIf="meals.lunch.length > 0">
+          <div class="meal-header">
+            <h4>Lunch</h4>
+          </div>
+          <div class="meal-items">
+            <div *ngFor="let item of meals.lunch" class="food-item">
+              <span>{{ item }}</span>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Dinner -->
+        <div class="meal-section" *ngIf="meals.dinner.length > 0">
+          <div class="meal-header">
+            <h4>Dinner</h4>
+          </div>
+          <div class="meal-items">
+            <div *ngFor="let item of meals.dinner" class="food-item">
+              <span>{{ item }}</span>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Snacks -->
+        <div class="meal-section" *ngIf="meals.snacks.length > 0">
+          <div class="meal-header">
+            <h4>Snacks</h4>
+          </div>
+          <div class="meal-items">
+            <div *ngFor="let item of meals.snacks" class="food-item">
+              <span>{{ item }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Bottom Action -->
+    <div class="bottom-actions">
+      <button class="scan-button" (click)="navigateToScan()">Scan New Food</button>
+      <button class="edit-log-button" (click)="navigateToLogging()">Edit Food Log</button>
+    </div>
+  </ion-content>

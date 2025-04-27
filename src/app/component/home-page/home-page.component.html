@@ -1,71 +1,42 @@
 <ion-content>
-    <div class="home-container">
-      <div class="welcome-section">
-        <h1>Kidney Health Tracker</h1>
-        <p>Track your diet for better kidney health</p>
-      </div>
+    <div class="app-header">
+        <div class="header-content">
+            <div class="app-title">Kidney Health Tracker</div>
+            <div class="app-date">{{ currentDate | date:'EEEE dd MMMM yyyy' }}</div>
+        </div>
+    </div>
 
     <!-- Quick Stats Section -->
-      <div class="quick-stats">
-        <h3>Today's Overview</h3>
-        <div class="stats-container">
-          <div class="stat-item">
-            <div class="stat-circle green">
-              <span>Na</span>
-            </div>
-            <p>Sodium</p>
-          </div>
-          <div class="stat-item">
-            <div class="stat-circle yellow">
-              <span>K</span>
-            </div>
-            <p>Potassium</p>
-          </div>
-          <div class="stat-item">
-            <div class="stat-circle red">
-              <span>P</span>
-            </div>
-            <p>Phosphorus</p>
-          </div>
-        </div>
-      </div>
+    <div class="welcome-section">
+        <h2>Welcome <span>{{userName}}</span> here is today's diet intake:</h2>
+        <p>Sodium: {{sodiumValue}}g</p>
+        <p>Potassium: {{potassiumValue}}g</p>
+        <p>Phosphorus: {{phosphorusValue}}g</p>
+    </div>
 
-      <!-- Log Food Button -->
-      <div class="feature-button" (click)="navigateToLogging()">
-        <ion-icon name="restaurant-outline"></ion-icon>
-        <div class="feature-text">
-          <h2>Log Food</h2>
-          <p>Record what you ate today</p>
-        </div>
-      </div>
+    <!-- Log Food Button -->
+    <div class="buttons-grid">
+        <button class="feature-button" (click)="navigateToLogging()">
+            Log Food & Drink
+            <span class="btn-icon">🍽️</span>
+        </button>
 
         <!-- Daily Summary Button -->
-        <div class="feature-button" (click)="navigateToDaily()">
-          <ion-icon name="calendar-outline"></ion-icon>
-          <div class="feature-text">
-            <h2>Daily Summary</h2>
-            <p>View your nutritional intake</p>
-          </div>
-        </div>
+        <button class="feature-button" (click)="navigateToDaily()">
+            View Daily Summary
+            <span class="btn-icon">📝</span>
+        </button>
 
-        <div class="features-grid">
-            <!-- Scan Product Button -->
-            <div class="feature-button" (click)="navigateToScan()">
-              <ion-icon name="scan-outline"></ion-icon>
-              <div class="feature-text">
-                <h2>Scan Product</h2>
-                <p>Check if a food item is safe</p>
-              </div>
-            </div>
+        <!-- Scan Product Button -->
+        <button class="feature-button" (click)="navigateToScan()">
+            Scan Product
+            <span class="btn-icon">📷</span>
+        </button>
 
         <!-- Settings Button -->
-        <div class="feature-button" (click)="navigateToSettings()">
-          <ion-icon name="settings-outline"></ion-icon>
-          <div class="feature-text">
-            <h2>Settings</h2>
-            <p>Customize your app</p>
-          </div>
-        </div>
-      </div>
+        <button class="feature-button" (click)="navigateToSettings()">
+            Settings
+            <span class="btn-icon">⚙️</span>
+        </button>
     </div>
-  </ion-content>
+</ion-content>
